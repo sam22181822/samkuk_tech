@@ -506,11 +506,37 @@
           <p>
             Stay updated with the latest news, tips, and exclusive offers. Join our community and never miss out on exciting updates!
           </p>
-            <form action="https://api.web3forms.com/submit" method="POST">
-              <input type="email" name="email" placeholder="Enter your email">
-              <input type="hidden" name="access_key" value="83ac9eab-4a78-45e6-a682-74ffe8612f33">
-              <button type="submit">Subscribe</button>
-            </form>
+           <form id="subscribe-form">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <input type="hidden" name="access_key" value="83ac9eab-4a78-45e6-a682-74ffe8612f33">
+  <button type="submit">Subscribe</button>
+</form>
+
+<script>
+  document.getElementById('subscribe-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent normal form submission
+
+    const formData = new FormData(this);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        // Redirect to YouTube subscribe link
+        window.location.href = " https://www.youtube.com/channel/UCHQv0yIfw0XWGxqI2f2NFVg?sub_confirmation=1";
+      } else {
+        alert("There was a problem submitting the form.");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert("There was an error submitting the form.");
+    });
+  });
+</script>
+
             
               </button>
             </form>
