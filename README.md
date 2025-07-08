@@ -1,1 +1,1 @@
-# samkuk_tech
+samkuk_tech
